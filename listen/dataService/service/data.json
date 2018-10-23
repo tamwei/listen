@@ -1,0 +1,30 @@
+{
+    "messages": [{
+                "image": "https://wx.qlogo.cn/mmopen/vi_32/llFpsLDNFibWiciauSuJUaJMzjmCCJhfr79jSkQbia6YBHbzT7sVUHv6CZuGQGw981VsFGP91NbSGJkD6LefCIWiaWA/0",
+                "name": "好办助手",
+                "msg": "欢迎来到好办！小办会帮您一起了...",
+                "time": "11:30",
+                "count": "11",
+                "remind": "1",
+                "unRead": "1",
+                "senderStutas": "1"
+                }, {
+                "image": null,
+                "name": "陈粒",
+                "msg": "欢迎来到好办！小办会帮您一起了...",
+                "time": "11:30",
+                "count": "0",
+                "remind": "1",
+                "unRead": "0",
+                "senderStutas": "2"
+                }, {
+                "image": "https://wx.qlogo.cn/mmopen/vi_32/llFpsLDNFibWiciauSuJUaJMzjmCCJhfr79jSkQbia6YBHbzT7sVUHv6CZuGQGw981VsFGP91NbSGJkD6LefCIWiaWA/0",
+                "name": "杭州黑洞科技有限公司",
+                "msg": "这是一份巡店报告，请查看！",
+                "time": "11:30",
+                "count": "11",
+                "remind": "1",
+                "unRead": "1",
+                "senderStutas": "1"
+                }]
+}
