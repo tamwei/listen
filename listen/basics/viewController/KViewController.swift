@@ -15,7 +15,7 @@ class kViewController: UIViewController,UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white;
+        self.view.backgroundColor = kVCBgColor;
         
         self.edgesForExtendedLayout = []
 

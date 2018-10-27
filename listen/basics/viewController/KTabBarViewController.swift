@@ -13,7 +13,7 @@ class KTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        setStatusBarBackgroundColor(color: .white)
         
         self.addChildViewController(getNav(className:"HomeVC", title:"首页", imageName: "tab_index", selectedImageName: "tab_index_select"))
         self.addChildViewController(getNav(className: "MessageVC", title:"消息", imageName: "tab_msg", selectedImageName: "tab_msg_select"))

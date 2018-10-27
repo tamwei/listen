@@ -6,10 +6,12 @@
 //  Copyright © 2018年 DMWL. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 import Log
-import UIKit
+
+import Kingfisher
 @_exported import SnapKit
 @_exported import SwiftProgressHUD
 @_exported import RxSwift
@@ -34,6 +36,32 @@ func RGBA(r:CGFloat , g:CGFloat , b:CGFloat,a:CGFloat) -> UIColor {
     return UIColor(red: r/R, green: g/R, blue: b/R, alpha: a)
 }
 
+func colorHex(hexString : String) -> UIColor {
+    var hexStr = NSString(string: hexString)
+    
+    if (hexStr.hasPrefix("#")) {
+        hexStr = hexStr.substring(from: 1) as NSString;
+    }
+    if hexStr.length != 3 && hexStr.length != 6 && hexStr.length != 8{
+        return UIColor.white;
+    }
+    var itemLength = 2
+    var startIndex = 0;
+    if hexStr.length == 3 {
+        itemLength = 1;
+    }
+    var s0:String = "FF";
+    if(hexStr.length == 8){
+        s0 = hexStr.substring(with: NSRange(location:startIndex + itemLength, length: itemLength))
+        startIndex = startIndex + itemLength;
+    }
+    let s1:String = hexStr.substring(with: NSRange(location:startIndex + itemLength * 0, length: itemLength))
+    let s2:String = hexStr.substring(with: NSRange(location:startIndex + itemLength * 1, length: itemLength))
+    let s3:String = hexStr.substring(with: NSRange(location:startIndex + itemLength * 2, length: itemLength))
+    
+    return UIColor(red:CGFloat(s1.hex2dec())/255.0, green:CGFloat(s2.hex2dec()) / 255.0, blue:CGFloat(s3.hex2dec()) / 255.0, alpha:CGFloat(s0.hex2dec()) / 255.0)
+    
+}
 
 func setTimeOut(function:(()->())?,time:TimeInterval,queue:DispatchQueue = DispatchQueue.main){
     queue.asyncAfter(deadline: DispatchTime.now()+time, execute: function!);
@@ -66,8 +94,9 @@ func setStatusBarBackgroundColor(color:UIColor) {
     }
 }
 
-let kTitleColor = UIColor.colorWithHexString(hexString: "#222222")  //标题,重要文字
-let kTextColor = UIColor.colorWithHexString(hexString: "#88949C")   //普通文字
+let kTitleColor = UIColor.colorWithHexString(hexString: "#333333")  //标题,重要文字
+let kTextColor = UIColor.colorWithHexString(hexString: "#666666")   //普通文字
+
 let kSubTextColor = UIColor.colorWithHexString(hexString: "#A5AFB8")  // 辅助文字
 let kTipTextColor = UIColor.colorWithHexString(hexString: "#CBD0D7")  // 提示性文字
 

@@ -38,7 +38,24 @@ extension UITableView {
         
     }
     
-  
+    func configTableView(delegate:AnyObject) {
+        
+        self.delegate = delegate as? UITableViewDelegate;
+        self.dataSource = delegate as? UITableViewDataSource;
+        self.tableFooterView = UIView()
+        
+        self.separatorStyle = .singleLine;
+        self.separatorColor = UIColor.colorWithHexString(hexString: "EBEBEB")
+        self.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        
+        if #available(iOS 11.0, *) {
+            self.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
+                
+        
+    }
     
 }
 

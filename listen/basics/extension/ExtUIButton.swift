@@ -17,4 +17,13 @@ extension UIButton {
        btn.titleLabel?.font = font!
        return btn
     }
+    
+    open class func button(img:String,selectImg:String? = nil) -> UIButton {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: img), for: .normal)
+        if let selectImage = selectImg{
+            btn.setImage(UIImage(named: selectImage), for: .selected)
+        }
+        return btn
+    }
 }

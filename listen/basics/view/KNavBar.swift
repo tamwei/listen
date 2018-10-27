@@ -69,7 +69,7 @@ class KNavBar: UIView {
         rightBtn?.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
         self.addSubview(rightBtn!)
         
-        tittleLab = UILabel.newLabel(fontSize: 18, color: .white, alignment: .center, text: "")
+        tittleLab = UILabel.label(fontSize: 18, color: .white, alignment: .center)
         self.addSubview(tittleLab!)
         
         leftBtn?.snp.makeConstraints({ (make) in

@@ -27,10 +27,12 @@ class KTextView: UIView {
         textView?.font = UIFont.systemFont(ofSize: 17)
         self.addSubview(textView!)
         
-        placeholderLab = UILabel.newLabel(fontSize: 17, color: kTipTextColor, alignment: .left, text: "点击输入文字")
+        placeholderLab = UILabel.label(fontSize: 17, color: kTipTextColor, alignment: .left)
+        placeholderLab?.text = "点击输入文字"
         self.addSubview(placeholderLab!)
         
-        count = UILabel.newLabel(fontSize: 12, color: kTipTextColor, alignment: .left, text: "0/80")
+        count = UILabel.label(fontSize: 12, color: kTipTextColor, alignment: .left)
+        count?.text = "0/80"
         self.addSubview(count!)
         
         textView?.snp.makeConstraints { (make) in

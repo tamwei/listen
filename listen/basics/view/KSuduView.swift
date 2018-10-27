@@ -12,9 +12,7 @@ import UIKit
 
 class KSuduView: UIView {
    
-    
-    
-    open class func suduView(list:Array<Any>,itemHeight:Float,topOffset:Float,bottomOffset:Float,templetClass:Swift.AnyClass,bindData:(_ tupe:Any,_ view:UIView)->()) ->UIView{
+    open class func suduView(list:Array<Any>,itemLineCount:Int,itemHeight:Float,hSpace:Float,vSpace:Float,templetClass:Swift.AnyClass,bindData:(_ tupe:Any,_ view:UIView)->()) ->UIView{
        
         let suduView = UIView()
         
@@ -26,36 +24,34 @@ class KSuduView: UIView {
             let clas = templetClass as! UIView.Type
             
             let view = clas.init()
-            view.backgroundColor = UIColor.colorWithHexString(hexString: "#F7F8FB")
             suduView.addSubview(view)
             
             view.snp.makeConstraints({ (make) in
                 
-                
-                if(index%3 == 0){
+                if(index%itemLineCount == 0){
                     make.left.equalTo(0)
                 } else {
                     let leftView = suduView.subviews[index-1]
-                    make.left.equalTo(leftView.snp.right).offset(5)
+                    make.left.equalTo(leftView.snp.right).offset(hSpace)
                     make.width.equalTo(leftView.snp.width)
 
                 }
                 
-                if(index/3 == 0){
-                    make.top.equalTo(topOffset)
+                if(index/itemLineCount == 0){
+                    make.top.equalTo(0)
                 } else {
-                    let topview = suduView.subviews[index-3]
-                    make.top.equalTo(topview.snp.bottom).offset(10)
+                    let topview = suduView.subviews[index-itemLineCount]
+                    make.top.equalTo(topview.snp.bottom).offset(vSpace)
                     make.width.equalTo(topview.snp.width)
 
                 }
                 
-                if(index%3 == 2){
+                if(index%itemLineCount == itemLineCount-1){
                     make.right.equalTo(0)
                 }
                 
-                if(index/3 == list.count/3) {
-                    make.bottom.equalTo(-bottomOffset)
+                if(index/itemLineCount == list.count/itemLineCount) {
+                    make.bottom.equalTo(0)
                 }
                 
                 make.height.equalTo(height)
@@ -83,18 +79,18 @@ class TextSuduTemplet: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        countlab = UILabel.newLabel(fontSize: 20, color: kTitleColor, alignment: .center, text: "")
+        countlab = UILabel()
         self.addSubview(countlab!)
         countlab?.snp.makeConstraints({ (make) in
-            make.top.equalTo(10)
+            make.top.equalTo(0)
             make.centerX.equalTo(self.snp.centerX)
         })
 
 
-        titlelab = UILabel.newLabel(fontSize: 13, color: kTitleColor, alignment: .center, text: "")
+        titlelab = UILabel()
         self.addSubview(titlelab!)
         titlelab?.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(0)
             make.centerX.equalTo(self.snp.centerX)
         })
     }
@@ -104,5 +100,35 @@ class TextSuduTemplet: UIView {
     }
 }
 
+
+class ImageSuduTemplet: UIView {
+    var imageView:UIImageView?
+    
+    var titlelab:UILabel?
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        imageView = UIImageView()
+        self.addSubview(imageView!)
+        imageView?.snp.makeConstraints({ (make) in
+            make.top.equalTo(0)
+            make.centerX.equalTo(self.snp.centerX)
+        })
+        
+        
+        titlelab = UILabel()
+        self.addSubview(titlelab!)
+        titlelab?.snp.makeConstraints({ (make) in
+            make.bottom.equalTo(0)
+            make.centerX.equalTo(self.snp.centerX)
+        })
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 
